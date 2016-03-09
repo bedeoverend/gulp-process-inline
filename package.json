@@ -1,0 +1,20 @@
+{
+  "name": "gulp-process-inline",
+  "version": "0.1.0",
+  "description": "Gulp plugin to extract and restore partials from HTML files",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "author": "Simpla <admin@simpla.io>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "vinyl": "^1.1.1"
+  }
+}
