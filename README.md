@@ -18,12 +18,12 @@ To use it just call `.extract()` with the HTML selector you want, then call `.re
 var gulp = require('gulp');
 var processInline = require('gulp-process-inline');
 
-gulp.task('inline-js', function() {
+gulp.task('scripts', function() {
   return gulp.src('./src/index.html')
     .pipe(processInline().extract('script'))
-      // Pipe in other gulp plugins here
+      // Pipe other gulp plugins here
       // eg: .pipe(uglify())
-    .pipe(processor.restore())
+    .pipe(processInline().restore())
     .pipe(gulp.dest('./dist'));
 });
 ```
