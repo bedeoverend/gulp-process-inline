@@ -28,9 +28,6 @@ gulp.task('inline-js', function() {
 });
 ```
 
-`gulp-process-inline` also preserves entry points (needed by things like Javscript bundlers), by creating temporary vinyl files while transforming HTML content.
-
-
 ## License
 
 MIT © [Simpla](https://simpla.io)
