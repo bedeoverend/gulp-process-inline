@@ -19,7 +19,7 @@ function extract(input, selector) {
   });
 }
 
-function restore(file, done) {
+function restore(file) {
   return new Promise(resolve => {
     let restore = processInline.restore();
 
@@ -56,6 +56,22 @@ describe('gulp-process-inline', () => {
 
     it('should have restored back to the original input', () => {
       assert.equal(restored, input);
+    });
+
+    it('should leave file untouched if selector not found', () => {
+      let original = '<div>Hi</div>',
+          promise;
+
+      return extract(original, 'style')
+        .then(file => {
+          file.contents = new Buffer('nope');
+          return file;
+        })
+        .then(restore)
+        .then(file => file.contents.toString())
+        .then(restored => {
+          assert.equal(original, restored);
+        });
     });
   });
 });
