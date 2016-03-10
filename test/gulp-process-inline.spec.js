@@ -8,7 +8,7 @@ function createFile(contents) {
 
 describe('gulp-process-inline', function() {
   describe('extract and restore', function() {
-    var js = 'console.log("Hello World")',
+    var js = 'for(var o=0;o<r.length;o++) { // @foo bar }',
         input = '<body>Hello<script>'+js+'</script></body>',
         extracted,
         restored;

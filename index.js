@@ -53,7 +53,7 @@ module.exports = function (opts) {
       }
 
       // Restore from manipulated file
-      cache.element.html(file.contents.toString());
+      cache.element.text(file.contents.toString());
 
       // Write back to intitial source file
       cache.source.contents = new Buffer(cache.$.html());
