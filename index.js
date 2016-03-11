@@ -68,16 +68,16 @@ module.exports = function (opts) {
 
       if (cache.blank) {
         done(null, cache.source);
+      } else {
+        // Restore from manipulated file
+        cache.element.text(file.contents.toString());
+
+        // Write back to intitial source file
+        cache.source.contents = new Buffer(cache.$.html());
+
+        // Return initial source file
+        done(null, cache.source);
       }
-
-      // Restore from manipulated file
-      cache.element.text(file.contents.toString());
-
-      // Write back to intitial source file
-      cache.source.contents = new Buffer(cache.$.html());
-
-      // Return initial source file
-      done(null, cache.source);
     });
   };
 
