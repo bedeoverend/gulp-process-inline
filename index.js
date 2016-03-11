@@ -21,26 +21,40 @@ module.exports = function (opts) {
 
       // Restore from files, or start a fresh
       var cache = file._inlineProcess || {},
-          $ = cache.$ || cheerio.load(file.contents.toString());
+          $ = cache.$ || cheerio.load(file.contents.toString()),
+          elements = $(selector),
+          clone;
 
-      $(selector).each(function() {
-        var element = $(this),
-            html = element.html(),
-            clone = file.clone();
+      if (elements.length === 0) {
+        clone = file.clone();
+        clone.contents = new Buffer('');
 
-        clone.contents = new Buffer(html);
+        clone._inlineProcess = {
+          blank: true,
+          source: file
+        };
 
-        // Update cache
-        cache.$ = $;
-        cache.source = file;
-        cache.element = element;
+        done(null, clone);
+      } else {
+        elements.each(function() {
+          var element = $(this),
+              html = element.html();
 
-        // Set cache on clone in case its new
-        clone._inlineProcess = cache;
+          clone = file.clone();
+          clone.contents = new Buffer(html);
 
-        that.push(clone);
-      });
-      done();
+          // Update cache
+          cache.$ = $;
+          cache.source = file;
+          cache.element = element;
+
+          // Set cache on clone in case its new
+          clone._inlineProcess = cache;
+
+          that.push(clone);
+        });
+        done();
+      }
     });
   };
 
@@ -50,6 +64,10 @@ module.exports = function (opts) {
 
       if (!cache) {
         return done(new PluginError('gulp-process-inline', 'Extract must be run first'));
+      }
+
+      if (cache.blank) {
+        done(null, cache.source);
       }
 
       // Restore from manipulated file

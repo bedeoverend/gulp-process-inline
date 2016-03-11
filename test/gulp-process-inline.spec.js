@@ -6,7 +6,7 @@ const processInline = require('..')();
 
 function extract(input, selector) {
   return new Promise((resolve) => {
-    let extractScript = processInline.extract('script'),
+    let extractScript = processInline.extract(selector),
         fakeFile = new File({
           contents: new Buffer(input)
         });
