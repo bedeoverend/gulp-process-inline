@@ -1,6 +1,6 @@
 {
   "name": "gulp-process-inline",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Process parts of HTML files directly inline with Gulp",
   "main": "index.js",
   "scripts": {
