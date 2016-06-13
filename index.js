@@ -8,6 +8,7 @@ module.exports = function (opts) {
   var cheerio = opts.cheerio || require('cheerio');
 
   var extract = function(selector) {
+    var i = 0;
     return through(function (file, encoding, done) {
       var that = this;
 
@@ -20,8 +21,7 @@ module.exports = function (opts) {
       }
 
       // Restore from files, or start a fresh
-      var cache = file._inlineProcess || {},
-          $ = cache.$ || cheerio.load(file.contents.toString()),
+      var $ = file._inlineProcess && file._inlineProcess.$ || cheerio.load(file.contents.toString()),
           elements = $(selector),
           clone;
 
@@ -37,7 +37,8 @@ module.exports = function (opts) {
         done(null, clone);
       } else {
         elements.each(function() {
-          var element = $(this),
+          var cache = file._inlineProcess || {},
+              element = $(this),
               html = element.html();
 
           clone = file.clone();
