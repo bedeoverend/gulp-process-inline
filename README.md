@@ -30,14 +30,14 @@ gulp.task('scripts', function() {
 
 ## License
 
-MIT © [Simpla](https://simpla.io)
+MIT © Bede Overend
 
 
 [npm-badge]: https://img.shields.io/npm/v/gulp-process-inline.svg
 [npm-url]: https://npmjs.org/package/gulp-process-inline
-[travis-badge]: https://img.shields.io/travis/simplaio/gulp-process-inline.svg
-[travis-url]: https://travis-ci.org/simplaio/gulp-process-inline
-[npmdeps-badge]: https://img.shields.io/david/simplaio/gulp-process-inline.svg
-[npmdeps-url]: https://david-dm.org/simplaio/gulp-process-inline
-[npmdevdeps-badge]: https://img.shields.io/david/dev/simplaio/gulp-process-inline.svg?theme=shields.io
-[npmdevdeps-url]: https://david-dm.org/simplaio/gulp-process-inline#info=devDependencies
+[travis-badge]: https://img.shields.io/travis/bedeoverend/gulp-process-inline.svg
+[travis-url]: https://travis-ci.org/bedeoverend/gulp-process-inline
+[npmdeps-badge]: https://img.shields.io/david/bedeoverend/gulp-process-inline.svg
+[npmdeps-url]: https://david-dm.org/bedeoverend/gulp-process-inline
+[npmdevdeps-badge]: https://img.shields.io/david/dev/bedeoverend/gulp-process-inline.svg?theme=shields.io
+[npmdevdeps-url]: https://david-dm.org/bedeoverend/gulp-process-inline#info=devDependencies
