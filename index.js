@@ -1,11 +1,12 @@
 var through = require('through2').obj,
+    cheerio = require('cheerio'),
     gutil = require('gulp-util'),
     fs = require('fs'),
     PluginError = gutil.PluginError;
 
 module.exports = function (opts) {
   opts = opts || {};
-  var cheerio = opts.cheerio || require('cheerio');
+  var cheerioOpts = opts.cheerio || {};
 
   var extract = function(selector) {
     var i = 0;
@@ -21,7 +22,7 @@ module.exports = function (opts) {
       }
 
       // Restore from files, or start a fresh
-      var $ = file._inlineProcess && file._inlineProcess.$ || cheerio.load(file.contents.toString()),
+      var $ = file._inlineProcess && file._inlineProcess.$ || cheerio.load(file.contents.toString(), cheerioOpts),
           elements = $(selector),
           clone;
 
